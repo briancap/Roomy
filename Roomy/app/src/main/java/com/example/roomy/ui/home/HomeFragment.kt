@@ -5,10 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.roomy.Bill
 import com.example.roomy.R
+import com.example.roomy.TestData
+import com.example.roomy.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
@@ -19,13 +26,24 @@ class HomeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+
+        //Get a reference to the binding object
+        val binding: FragmentHomeBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_home, container, false)
+
+        binding.homeGridBills.layoutManager = GridLayoutManager( activity, 4 )
+
+        val gridAdapter : HomeBillsAdapter = HomeBillsAdapter()
+        binding.homeGridBills.adapter = gridAdapter
+
+        gridAdapter.data = TestData.bills
+
+        //Get reference to view model
+        val homeViewModel : HomeViewModel by viewModels()
+
+
+
+
+        return binding.root
     }
 }
