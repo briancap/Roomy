@@ -16,6 +16,7 @@ import com.example.roomy.Bill
 import com.example.roomy.R
 import com.example.roomy.TestData
 import com.example.roomy.databinding.FragmentHomeBinding
+import timber.log.Timber
 
 class HomeFragment : Fragment() {
 
@@ -26,7 +27,7 @@ class HomeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-
+        Timber.e("in onCreate")
         //Get a reference to the binding object
         val binding: FragmentHomeBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_home, container, false)
@@ -36,12 +37,17 @@ class HomeFragment : Fragment() {
         val gridAdapter : HomeBillsAdapter = HomeBillsAdapter()
         binding.homeGridBills.adapter = gridAdapter
 
-        gridAdapter.data = TestData.bills
+
 
         //Get reference to view model
         val homeViewModel : HomeViewModel by viewModels()
 
-
+        homeViewModel.bills.observe(viewLifecycleOwner, Observer {
+            Timber.e( "in bills observer")
+            it?.let{
+                gridAdapter.submitList(it)
+            }
+        })
 
 
         return binding.root

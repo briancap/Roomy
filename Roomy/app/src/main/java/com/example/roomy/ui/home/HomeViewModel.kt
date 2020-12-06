@@ -3,11 +3,16 @@ package com.example.roomy.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.roomy.Bill
+import com.example.roomy.TestData
+import timber.log.Timber
 
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    var bills = MutableLiveData<List<Bill>>().apply{
+        Timber.e( "in bills apply section" )
+        value = TestData.bills
     }
-    val text: LiveData<String> = _text
+
+
 }

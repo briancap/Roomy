@@ -5,24 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomy.Bill
 import com.example.roomy.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import timber.log.Timber
+import java.nio.file.Files.size
 
-class HomeBillsAdapter : RecyclerView.Adapter<HomeBillsAdapter.ViewHolder>() {
-
-    var data =  listOf<Bill>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
-    override fun getItemCount() = data.size
+class HomeBillsAdapter : ListAdapter<Bill, HomeBillsAdapter.ViewHolder>( BillDiffCallback() ) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem( position )
         holder.bind(item)
     }
 
@@ -51,6 +46,17 @@ class HomeBillsAdapter : RecyclerView.Adapter<HomeBillsAdapter.ViewHolder>() {
                 return ViewHolder(view)
             }
         }
+    }
+
+}
+
+class BillDiffCallback : DiffUtil.ItemCallback<Bill>(){
+    override fun areItemsTheSame(oldItem: Bill, newItem: Bill): Boolean {
+        return oldItem.billName == newItem.billName
+    }
+
+    override fun areContentsTheSame(oldItem: Bill, newItem: Bill): Boolean {
+        return oldItem == newItem
     }
 
 }
