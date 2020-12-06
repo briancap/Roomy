@@ -24,9 +24,8 @@ class HomeBillsAdapter : ListAdapter<Bill, HomeBillsAdapter.ViewHolder>( BillDif
     class ViewHolder( val binding : GridItemFabBinding ) : RecyclerView.ViewHolder( binding.root ) {
 
         fun bind(item: Bill) {
-            //resources will set drawable when fabs have unique drawables for each bill
-            val res = itemView.context.resources
-            binding.gridItemFabLabel.text = item.billName
+            binding.bill = item
+            binding.executePendingBindings()
         }
 
         companion object {

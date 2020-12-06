@@ -27,23 +27,24 @@ class HomeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        Timber.e("in onCreate")
+
         //Get a reference to the binding object
         val binding: FragmentHomeBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_home, container, false)
 
+        //layout manager to specify number of columns for grid view
         binding.homeGridBills.layoutManager = GridLayoutManager( activity, 4 )
 
+        //set adapter
         val gridAdapter : HomeBillsAdapter = HomeBillsAdapter()
         binding.homeGridBills.adapter = gridAdapter
-
 
 
         //Get reference to view model
         val homeViewModel : HomeViewModel by viewModels()
 
+        //observe the bills object and set the initial bill list
         homeViewModel.bills.observe(viewLifecycleOwner, Observer {
-            Timber.e( "in bills observer")
             it?.let{
                 gridAdapter.submitList(it)
             }

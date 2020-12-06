@@ -10,7 +10,6 @@ import timber.log.Timber
 class HomeViewModel : ViewModel() {
 
     var bills = MutableLiveData<List<Bill>>().apply{
-        Timber.e( "in bills apply section" )
         value = TestData.bills
     }
 
