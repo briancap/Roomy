@@ -1,18 +1,13 @@
 package com.example.roomy.ui.home
 
-import android.content.res.Resources
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomy.Bill
-import com.example.roomy.R
+import com.example.roomy.databinding.GridItemFabBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import timber.log.Timber
-import java.nio.file.Files.size
 
 class HomeBillsAdapter : ListAdapter<Bill, HomeBillsAdapter.ViewHolder>( BillDiffCallback() ) {
 
@@ -26,24 +21,20 @@ class HomeBillsAdapter : ListAdapter<Bill, HomeBillsAdapter.ViewHolder>( BillDif
     }
 
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var gridItemFab: FloatingActionButton = view.findViewById(R.id.grid_item_fab)
-        var gridItemFabLabel: TextView = view.findViewById(R.id.grid_item_fab_label)
+    class ViewHolder( val binding : GridItemFabBinding ) : RecyclerView.ViewHolder( binding.root ) {
 
         fun bind(item: Bill) {
+            //resources will set drawable when fabs have unique drawables for each bill
             val res = itemView.context.resources
-
-            gridItemFabLabel.text = item.billName
-
+            binding.gridItemFabLabel.text = item.billName
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater
-                    .inflate(R.layout.grid_item_fab, parent, false)
+                val binding = GridItemFabBinding.inflate( layoutInflater, parent, false )
 
-                return ViewHolder(view)
+                return ViewHolder( binding )
             }
         }
     }
