@@ -61,8 +61,6 @@ class HomeFragment : Fragment() {
                             binding.root.findNavController()
                                 .navigate(HomeFragmentDirections.actionNavigationHomeToBillDetailFragment( billName ))
                         }
-
-
                     }
 
                     override fun onLongItemClick(view: View?, position: Int) {
@@ -73,6 +71,12 @@ class HomeFragment : Fragment() {
             )
         )
         //END BILLS SECTION
+
+
+
+        //START CHORE SECTION
+
+        //END CHORE SECTION
 
 
 

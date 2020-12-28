@@ -6,6 +6,7 @@
 
     <!-- Fragment Home -->
     <string name="title_bills">Bills</string>
+    <string name="title_weekly_chore">Weekly Chore</string>
 
     <!-- Bill Detail Page -->
     <string name="title_bill_overview">Bill Overview</string>
