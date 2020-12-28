@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/billDetailFragment"
         android:name="com.example.roomy.ui.details.BillDetailFragment"
-        android:label="BillDetailFragment"
+        android:label="Bill Detail"
         tools:layout="@layout/fragment_bill_detail">
         <argument
             android:name="billName"
