@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.example.roomy.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_billDetailFragment"
+            app:destination="@id/billDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +26,16 @@
         android:name="com.example.roomy.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/billDetailFragment"
+        android:name="com.example.roomy.ui.details.BillDetailFragment"
+        android:label="BillDetailFragment"
+        tools:layout="@layout/fragment_bill_detail">
+        <argument
+            android:name="billName"
+            app:argType="string" />
+    </fragment>
+
+
 </navigation>

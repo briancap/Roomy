@@ -4,17 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.roomy.Bill
 import com.example.roomy.R
-import com.example.roomy.TestData
+import com.example.roomy.custom.AdapterItemClickListener
 import com.example.roomy.databinding.FragmentHomeBinding
 import timber.log.Timber
 
@@ -32,6 +29,8 @@ class HomeFragment : Fragment() {
         val binding: FragmentHomeBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_home, container, false)
 
+
+        //START BILLS SECTION
         //layout manager to specify number of columns for grid view
         binding.homeGridBills.layoutManager = GridLayoutManager( activity, 4 )
 
@@ -49,6 +48,32 @@ class HomeFragment : Fragment() {
                 gridAdapter.submitList(it)
             }
         })
+
+        binding.homeGridBills.addOnItemTouchListener(
+            AdapterItemClickListener(
+                context,
+                binding.homeGridBills,
+                object : AdapterItemClickListener.OnItemClickListener{
+                    override fun onItemClick(view: View?, position: Int) {
+                        Timber.v( "gridBills; onItemClick + " + position )
+
+                        homeViewModel.bills.value?.get(position)?.billName?.let { billName ->
+                            binding.root.findNavController()
+                                .navigate(HomeFragmentDirections.actionNavigationHomeToBillDetailFragment( billName ))
+                        }
+
+
+                    }
+
+                    override fun onLongItemClick(view: View?, position: Int) {
+                        Timber.v( "gridBills; onLongItemClick")
+                        onItemClick( view, position )
+                    }
+                }
+            )
+        )
+        //END BILLS SECTION
+
 
 
         return binding.root

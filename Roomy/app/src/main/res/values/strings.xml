@@ -7,5 +7,11 @@
     <!-- Fragment Home -->
     <string name="title_bills">Bills</string>
 
+    <!-- Bill Detail Page -->
+    <string name="title_bill_overview">Bill Overview</string>
+    <string name="title_bill_trend">Bill Trend</string>
+    <string name="title_bill_stats">Bill Stats</string>
+    <string name="title_bill_other_options">Other Options</string>
+    <string name="title_bill_manage_account">Manage Account</string>
 
 </resources>
