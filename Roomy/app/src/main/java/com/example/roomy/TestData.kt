@@ -7,11 +7,17 @@ class TestData {
 
     companion object{
         val bills : List<Bill> = listOf(
-            Bill("Rent"), Bill("Internet"), Bill("Electric"), Bill("Gas")
+            Bill("Rent")
+            , Bill("Internet")
+            , Bill("Electric")
+            , Bill("Gas")
         )
 
-        val bills2 : List<Bill> = listOf(
-            Bill("Rent2"), Bill("Internet2"), Bill("Electric2"), Bill("Gas2")
+        val sharedItems : List<SharedItem> = listOf(
+            SharedItem("Olive Oil")
+            , SharedItem("Dish Soap")
+            , SharedItem("Sponges")
+            , SharedItem("Laundry Detergent")
         )
     }
 

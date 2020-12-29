@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomy.R
 import com.example.roomy.custom.AdapterItemClickListener
 import com.example.roomy.databinding.FragmentHomeBinding
@@ -35,19 +36,8 @@ class HomeFragment : Fragment() {
         binding.homeGridBills.layoutManager = GridLayoutManager( activity, 4 )
 
         //set adapter
-        val gridAdapter : HomeBillsAdapter = HomeBillsAdapter()
-        binding.homeGridBills.adapter = gridAdapter
-
-
-        //Get reference to view model
-        val homeViewModel : HomeViewModel by viewModels()
-
-        //observe the bills object and set the initial bill list
-        homeViewModel.bills.observe(viewLifecycleOwner, Observer {
-            it?.let{
-                gridAdapter.submitList(it)
-            }
-        })
+        val billsAdapter : BillsGridAdapter = BillsGridAdapter()
+        binding.homeGridBills.adapter = billsAdapter
 
         binding.homeGridBills.addOnItemTouchListener(
             AdapterItemClickListener(
@@ -79,6 +69,38 @@ class HomeFragment : Fragment() {
         //END CHORE SECTION
 
 
+
+        //START SHARED SECTION
+        //default vertical layout manager
+        binding.homeListShared.layoutManager = LinearLayoutManager( context )
+
+        //set adapter
+        val sharedItemsAdapter : SharedItemsAdapter = SharedItemsAdapter()
+        binding.homeListShared.adapter = sharedItemsAdapter
+
+        //END SHARED SECTION
+
+
+        //START VIEW MODEL
+        //Get reference to view model
+        val homeViewModel : HomeViewModel by viewModels()
+
+        //observe the bills object and set the initial bill list
+        homeViewModel.bills.observe(viewLifecycleOwner, Observer {
+            it?.let{
+                billsAdapter.submitList(it)
+            }
+        })
+
+        //observe the sharedItem object and set the initial sharedItem list
+        homeViewModel.sharedItem.observe(viewLifecycleOwner, Observer {
+            it?.let{
+                sharedItemsAdapter.submitList(it)
+            }
+        })
+
+
+        //END VIEW MODEL
 
         return binding.root
     }

@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomy.Bill
 import com.example.roomy.databinding.GridItemFabBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class HomeBillsAdapter : ListAdapter<Bill, HomeBillsAdapter.ViewHolder>( BillDiffCallback() ) {
+class BillsGridAdapter : ListAdapter<Bill, BillsGridAdapter.ViewHolder>( BillDiffCallback() ) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem( position )
