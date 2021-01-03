@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="homeViewModel"
+            type="com.example.roomy.ui.home.HomeViewModel" />
+    </data>
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -136,6 +143,7 @@
                             android:minHeight="0dp"
                             android:paddingBottom="4dp"
                             android:paddingTop="4dp"
+                            android:onClick="@{() -> homeViewModel.onAllChores() }"
                             style="?attr/borderlessButtonStyle"
                             app:layout_constraintTop_toTopOf="@id/home_title_weekly_chore"
                             app:layout_constraintBottom_toBottomOf="@id/home_title_weekly_chore"

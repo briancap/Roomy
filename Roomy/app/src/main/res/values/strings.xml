@@ -16,4 +16,7 @@
     <string name="title_bill_other_options">Other Options</string>
     <string name="title_bill_manage_account">Manage Account</string>
 
+    <!-- Chore Detail Page -->
+    <string name="title_chore_all">All Chores</string>
+
 </resources>

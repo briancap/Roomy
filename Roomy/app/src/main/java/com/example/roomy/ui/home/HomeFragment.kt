@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomy.R
@@ -29,6 +30,13 @@ class HomeFragment : Fragment() {
         //Get a reference to the binding object
         val binding: FragmentHomeBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_home, container, false)
+
+        //Get reference to view models
+        val homeViewModel : HomeViewModel by viewModels()
+        binding.homeViewModel = homeViewModel
+
+
+
 
 
         //START BILLS SECTION
@@ -64,9 +72,11 @@ class HomeFragment : Fragment() {
 
 
 
+
         //START CHORE SECTION
 
         //END CHORE SECTION
+
 
 
 
@@ -81,14 +91,22 @@ class HomeFragment : Fragment() {
         //END SHARED SECTION
 
 
+
+
+
         //START VIEW MODEL
-        //Get reference to view model
-        val homeViewModel : HomeViewModel by viewModels()
 
         //observe the bills object and set the initial bill list
         homeViewModel.bills.observe(viewLifecycleOwner, Observer {
             it?.let{
                 billsAdapter.submitList(it)
+            }
+        })
+
+        homeViewModel.eventAllChores.observe(viewLifecycleOwner, Observer { eventAllChores ->
+            if( eventAllChores ){
+                findNavController().navigate( HomeFragmentDirections.actionNavigationHomeToChoreDetailFragment() )
+                homeViewModel.onAllChoresComplete()
             }
         })
 
@@ -99,8 +117,9 @@ class HomeFragment : Fragment() {
             }
         })
 
-
         //END VIEW MODEL
+
+
 
         return binding.root
     }
