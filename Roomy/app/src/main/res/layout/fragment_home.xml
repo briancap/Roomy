@@ -243,6 +243,7 @@
                             android:minHeight="0dp"
                             android:paddingBottom="4dp"
                             android:paddingTop="4dp"
+                            android:onClick="@{() -> homeViewModel.onAddSharedItem() }"
                             app:icon="@drawable/ic_baseline_add_24"
                             app:iconTint="@color/colorAccent"
                             style="?attr/borderlessButtonStyle"

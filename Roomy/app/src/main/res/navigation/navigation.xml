@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_navigation_home_to_choreDetailFragment"
             app:destination="@id/choreDetailFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_sharedItemDetailFragment"
+            app:destination="@id/sharedItemDetailFragment" />
     </fragment>
 
     <fragment
@@ -44,6 +47,11 @@
         android:id="@+id/choreDetailFragment"
         android:name="com.example.roomy.ui.details.ChoreDetailFragment"
         android:label="ChoreDetailFragment" />
+
+    <fragment
+        android:id="@+id/sharedItemDetailFragment"
+        android:name="com.example.roomy.ui.details.SharedItemDetailFragment"
+        android:label="SharedItemDetailFragment" />
 
 
 </navigation>

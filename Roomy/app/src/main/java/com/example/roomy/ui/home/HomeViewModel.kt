@@ -46,4 +46,18 @@ class HomeViewModel : ViewModel() {
     fun onChoreButtonChangeCompleted(){
         _eventChoreCompleted.value = false
     }
+
+
+    //add a shared item
+    private val _eventAddSharedItem = MutableLiveData<Boolean>()
+    val eventAddSharedItem: LiveData<Boolean>
+        get() = _eventAddSharedItem
+
+    fun onAddSharedItem(){
+        _eventAddSharedItem.value = true
+    }
+
+    fun onAddSharedItemCompleted(){
+        _eventAddSharedItem.value = false
+    }
 }

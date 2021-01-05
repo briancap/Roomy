@@ -152,6 +152,14 @@ class HomeFragment : Fragment() {
             }
         })
 
+        //listener for the button to view all chores
+        homeViewModel.eventAddSharedItem.observe(viewLifecycleOwner, Observer { eventAddSharedItem ->
+            if( eventAddSharedItem ){
+                findNavController().navigate( HomeFragmentDirections.actionNavigationHomeToSharedItemDetailFragment() )
+                homeViewModel.onAddSharedItemCompleted()
+            }
+        })
+
         //END VIEW MODEL
 
 

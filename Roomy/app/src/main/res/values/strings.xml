@@ -19,4 +19,7 @@
     <!-- Chore Detail Page -->
     <string name="title_chore_all">All Chores</string>
 
+    <!-- Shared Item Detail Page -->
+    <string name="title_shared_item_all">All Shared Items</string>
+
 </resources>
