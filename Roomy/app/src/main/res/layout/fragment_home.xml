@@ -183,6 +183,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
                             android:layout_marginEnd="16dp"
+                            android:onClick="@{() -> homeViewModel.onChoreMarkCompleted() }"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             app:strokeColor="@color/colorAccent"
                             app:layout_constraintTop_toTopOf="parent"

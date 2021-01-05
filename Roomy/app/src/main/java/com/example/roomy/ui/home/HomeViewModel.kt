@@ -19,16 +19,31 @@ class HomeViewModel : ViewModel() {
     }
 
 
-
+    //view all weekly chores
     private val _eventAllChores = MutableLiveData<Boolean>()
     val eventAllChores: LiveData<Boolean>
         get() = _eventAllChores
 
     fun onAllChores(){
         _eventAllChores.value = true
+
     }
 
     fun onAllChoresComplete(){
         _eventAllChores.value = false
+    }
+
+
+    //mark the current chore completed
+    private val _eventChoreCompleted = MutableLiveData<Boolean>()
+    val eventChoreCompleted: LiveData<Boolean>
+        get() = _eventChoreCompleted
+
+    fun onChoreMarkCompleted(){
+        _eventChoreCompleted.value = true
+    }
+
+    fun onChoreButtonChangeCompleted(){
+        _eventChoreCompleted.value = false
     }
 }

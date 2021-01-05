@@ -1,9 +1,11 @@
 package com.example.roomy.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -73,12 +75,6 @@ class HomeFragment : Fragment() {
 
 
 
-        //START CHORE SECTION
-
-        //END CHORE SECTION
-
-
-
 
         //START SHARED SECTION
         //default vertical layout manager
@@ -103,12 +99,51 @@ class HomeFragment : Fragment() {
             }
         })
 
+        //listener for the button to view all chores
         homeViewModel.eventAllChores.observe(viewLifecycleOwner, Observer { eventAllChores ->
             if( eventAllChores ){
                 findNavController().navigate( HomeFragmentDirections.actionNavigationHomeToChoreDetailFragment() )
                 homeViewModel.onAllChoresComplete()
             }
         })
+
+        //listener for the button to mark chore completed
+        var choreCompleted = false;
+        homeViewModel.eventChoreCompleted.observe(viewLifecycleOwner, Observer { eventChoreCompleted ->
+
+            if( eventChoreCompleted ){
+
+                if( !choreCompleted ) {
+                    choreCompleted = true
+                    binding.homeWeeklyChoreMarkCompleted.text = "COMPLETED: 10/9"
+
+                    if (context != null) {
+                        binding.homeWeeklyChoreMarkCompleted.setBackgroundColor(
+                            ContextCompat.getColor(
+                                context as Context,
+                                R.color.colorBackground
+                            )
+                        )
+                    }
+                } else {
+                    choreCompleted = false
+
+                    binding.homeWeeklyChoreMarkCompleted.text  = "MARK COMPLETED"
+
+                    if (context != null) {
+                        binding.homeWeeklyChoreMarkCompleted.setBackgroundColor(
+                            ContextCompat.getColor(
+                                context as Context,
+                                R.color.fab_light
+                            )
+                        )
+                    }
+                }
+
+                homeViewModel.onChoreButtonChangeCompleted()
+            }
+        })
+
 
         //observe the sharedItem object and set the initial sharedItem list
         homeViewModel.sharedItem.observe(viewLifecycleOwner, Observer {
@@ -118,6 +153,7 @@ class HomeFragment : Fragment() {
         })
 
         //END VIEW MODEL
+
 
 
 
