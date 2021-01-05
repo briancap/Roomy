@@ -43,16 +43,16 @@ class HomeFragment : Fragment() {
 
         //START BILLS SECTION
         //layout manager to specify number of columns for grid view
-        binding.homeGridBills.layoutManager = GridLayoutManager( activity, 4 )
+        binding.billsGrid.layoutManager = GridLayoutManager( activity, 4 )
 
         //set adapter
         val billsAdapter : BillsGridAdapter = BillsGridAdapter()
-        binding.homeGridBills.adapter = billsAdapter
+        binding.billsGrid.adapter = billsAdapter
 
-        binding.homeGridBills.addOnItemTouchListener(
+        binding.billsGrid.addOnItemTouchListener(
             AdapterItemClickListener(
                 context,
-                binding.homeGridBills,
+                binding.billsGrid,
                 object : AdapterItemClickListener.OnItemClickListener{
                     override fun onItemClick(view: View?, position: Int) {
                         Timber.v( "gridBills; onItemClick + " + position )
@@ -78,11 +78,12 @@ class HomeFragment : Fragment() {
 
         //START SHARED SECTION
         //default vertical layout manager
-        binding.homeListShared.layoutManager = LinearLayoutManager( context )
+        binding.sharedList.layoutManager = LinearLayoutManager( context )
 
         //set adapter
         val sharedItemsAdapter : SharedItemsAdapter = SharedItemsAdapter()
-        binding.homeListShared.adapter = sharedItemsAdapter
+        binding.sharedList.adapter = sharedItemsAdapter
+
 
         //END SHARED SECTION
 
@@ -115,10 +116,10 @@ class HomeFragment : Fragment() {
 
                 if( !choreCompleted ) {
                     choreCompleted = true
-                    binding.homeWeeklyChoreMarkCompleted.text = "COMPLETED: 10/9"
+                    binding.weeklyChoreMarkCompleted.text = "COMPLETED: 10/9"
 
                     if (context != null) {
-                        binding.homeWeeklyChoreMarkCompleted.setBackgroundColor(
+                        binding.weeklyChoreMarkCompleted.setBackgroundColor(
                             ContextCompat.getColor(
                                 context as Context,
                                 R.color.colorBackground
@@ -127,11 +128,10 @@ class HomeFragment : Fragment() {
                     }
                 } else {
                     choreCompleted = false
-
-                    binding.homeWeeklyChoreMarkCompleted.text  = "MARK COMPLETED"
+                    binding.weeklyChoreMarkCompleted.text  = "MARK COMPLETED"
 
                     if (context != null) {
-                        binding.homeWeeklyChoreMarkCompleted.setBackgroundColor(
+                        binding.weeklyChoreMarkCompleted.setBackgroundColor(
                             ContextCompat.getColor(
                                 context as Context,
                                 R.color.fab_light
