@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#6200ee</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorBackground">#EAEAEA</color>
@@ -12,4 +12,7 @@
     <color name="text_main_black">#000000</color>
     <color name="text_secondary_grey">#757575</color>
     <color name="section_divider">#bdbdbd</color>
+
+    <!-- RIPPLE material design color palette level 100-->
+    <color name="colorRipple">#D4Bff9</color>
 </resources>
