@@ -5,6 +5,7 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
+    <!-- HOME FRAGMENT, Bill, Chore, Shared Item -->
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.roomy.ui.home.HomeFragment"
@@ -19,19 +20,21 @@
         <action
             android:id="@+id/action_navigation_home_to_sharedItemDetailFragment"
             app:destination="@id/sharedItemDetailFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_addItemFragment"
+            app:destination="@id/addItemFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.roomy.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.roomy.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/addItemFragment"
+        android:name="com.example.roomy.ui.home.AddItemFragment"
+        android:label="AddItemFragment">
+        <argument
+            android:name="itemName"
+            app:argType="string" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/billDetailFragment"
@@ -52,6 +55,24 @@
         android:id="@+id/sharedItemDetailFragment"
         android:name="com.example.roomy.ui.details.SharedItemDetailFragment"
         android:label="SharedItemDetailFragment" />
+
+
+
+
+
+
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.roomy.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.roomy.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
 
 
 </navigation>

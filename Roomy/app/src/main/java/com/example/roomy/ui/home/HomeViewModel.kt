@@ -19,6 +19,20 @@ class HomeViewModel : ViewModel() {
     }
 
 
+    //add bill
+    private val _eventAddBill = MutableLiveData<Boolean>()
+    val eventAddBill: LiveData<Boolean>
+        get() = _eventAddBill
+
+    fun onAddBill(){
+        _eventAddBill.value = true
+    }
+
+    fun onAddBillComplete(){
+        _eventAddBill.value = false
+    }
+
+
     //view all weekly chores
     private val _eventAllChores = MutableLiveData<Boolean>()
     val eventAllChores: LiveData<Boolean>
@@ -26,7 +40,6 @@ class HomeViewModel : ViewModel() {
 
     fun onAllChores(){
         _eventAllChores.value = true
-
     }
 
     fun onAllChoresComplete(){

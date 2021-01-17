@@ -93,6 +93,7 @@ class HomeFragment : Fragment() {
 
         //START VIEW MODEL
 
+        //START Fragment Home set List Adapter
         //observe the bills object and set the initial bill list
         homeViewModel.bills.observe(viewLifecycleOwner, Observer {
             it?.let{
@@ -100,6 +101,35 @@ class HomeFragment : Fragment() {
             }
         })
 
+        //observe the sharedItem object and set the initial sharedItem list
+        homeViewModel.sharedItem.observe(viewLifecycleOwner, Observer {
+            it?.let{
+                sharedItemsAdapter.submitList(it)
+            }
+        })
+        //END Fragment Home set List Adapter
+
+
+        //START ADD ITEMS //action_navigation_home_to_addItemFragment
+        //listener for the button to add bills
+        homeViewModel.eventAddBill.observe(viewLifecycleOwner, Observer { eventAddBill ->
+            if( eventAddBill ){
+                findNavController().navigate( HomeFragmentDirections.actionNavigationHomeToAddItemFragment( "bill" ) )
+                homeViewModel.onAddBillComplete()
+            }
+        })
+
+        //listener for the button to view all chores
+        homeViewModel.eventAddSharedItem.observe(viewLifecycleOwner, Observer { eventAddSharedItem ->
+            if( eventAddSharedItem ){
+                findNavController().navigate( HomeFragmentDirections.actionNavigationHomeToAddItemFragment( "shared" ) )
+                homeViewModel.onAddSharedItemCompleted()
+            }
+        })
+        //END ADD ITEMS
+
+
+        //START Chore Handling
         //listener for the button to view all chores
         homeViewModel.eventAllChores.observe(viewLifecycleOwner, Observer { eventAllChores ->
             if( eventAllChores ){
@@ -143,22 +173,8 @@ class HomeFragment : Fragment() {
                 homeViewModel.onChoreButtonChangeCompleted()
             }
         })
+        //END Chore Handling
 
-
-        //observe the sharedItem object and set the initial sharedItem list
-        homeViewModel.sharedItem.observe(viewLifecycleOwner, Observer {
-            it?.let{
-                sharedItemsAdapter.submitList(it)
-            }
-        })
-
-        //listener for the button to view all chores
-        homeViewModel.eventAddSharedItem.observe(viewLifecycleOwner, Observer { eventAddSharedItem ->
-            if( eventAddSharedItem ){
-                findNavController().navigate( HomeFragmentDirections.actionNavigationHomeToSharedItemDetailFragment() )
-                homeViewModel.onAddSharedItemCompleted()
-            }
-        })
 
         //END VIEW MODEL
 
