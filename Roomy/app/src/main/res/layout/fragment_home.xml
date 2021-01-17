@@ -66,6 +66,7 @@
                             app:icon="@drawable/ic_baseline_add_24"
                             app:iconTint="@color/colorAccent"
                             style="?attr/borderlessButtonStyle"
+                            app:rippleColor="@color/colorRipple"
                             app:layout_constraintTop_toTopOf="@id/bills_card_title"
                             app:layout_constraintBottom_toBottomOf="@id/bills_card_title"
                             app:layout_constraintEnd_toEndOf="parent"/>
@@ -145,6 +146,7 @@
                             android:paddingTop="4dp"
                             android:onClick="@{() -> homeViewModel.onAllChores() }"
                             style="?attr/borderlessButtonStyle"
+                            app:rippleColor="@color/colorRipple"
                             app:layout_constraintTop_toTopOf="@id/weekly_chore_title"
                             app:layout_constraintBottom_toBottomOf="@id/weekly_chore_title"
                             app:layout_constraintEnd_toEndOf="parent"/>
@@ -186,6 +188,7 @@
                             android:onClick="@{() -> homeViewModel.onChoreMarkCompleted() }"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             app:strokeColor="@color/colorAccent"
+                            app:rippleColor="@color/colorRipple"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -247,6 +250,7 @@
                             app:icon="@drawable/ic_baseline_add_24"
                             app:iconTint="@color/colorAccent"
                             style="?attr/borderlessButtonStyle"
+                            app:rippleColor="@color/colorRipple"
                             app:layout_constraintTop_toTopOf="@id/shared_title"
                             app:layout_constraintBottom_toBottomOf="@id/shared_title"
                             app:layout_constraintEnd_toEndOf="parent"/>

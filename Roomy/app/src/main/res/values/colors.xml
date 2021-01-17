@@ -14,5 +14,5 @@
     <color name="section_divider">#bdbdbd</color>
 
     <!-- RIPPLE material design color palette level 100-->
-    <color name="colorRipple">#D4Bff9</color>
+    <color name="colorRipple">#1A6200ee</color>
 </resources>
