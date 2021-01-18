@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomy.R
 import com.example.roomy.custom.AdapterItemClickListener
+import com.example.roomy.dataClasses.Constants
 import com.example.roomy.databinding.FragmentHomeBinding
 import timber.log.Timber
 
@@ -114,7 +115,7 @@ class HomeFragment : Fragment() {
         //listener for the button to add bills
         homeViewModel.eventAddBill.observe(viewLifecycleOwner, Observer { eventAddBill ->
             if( eventAddBill ){
-                findNavController().navigate( HomeFragmentDirections.actionNavigationHomeToAddItemFragment( "bill" ) )
+                findNavController().navigate( HomeFragmentDirections.actionNavigationHomeToAddItemFragment( Constants.BILL) )
                 homeViewModel.onAddBillComplete()
             }
         })
@@ -122,7 +123,7 @@ class HomeFragment : Fragment() {
         //listener for the button to view all chores
         homeViewModel.eventAddSharedItem.observe(viewLifecycleOwner, Observer { eventAddSharedItem ->
             if( eventAddSharedItem ){
-                findNavController().navigate( HomeFragmentDirections.actionNavigationHomeToAddItemFragment( "shared" ) )
+                findNavController().navigate( HomeFragmentDirections.actionNavigationHomeToAddItemFragment( Constants.SHARED_ITEM ) )
                 homeViewModel.onAddSharedItemCompleted()
             }
         })
