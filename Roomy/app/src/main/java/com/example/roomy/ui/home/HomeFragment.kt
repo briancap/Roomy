@@ -76,7 +76,6 @@ class HomeFragment : Fragment() {
 
 
 
-
         //START SHARED SECTION
         //default vertical layout manager
         binding.sharedList.layoutManager = LinearLayoutManager( context )
@@ -85,7 +84,27 @@ class HomeFragment : Fragment() {
         val sharedItemsAdapter : SharedItemsAdapter = SharedItemsAdapter()
         binding.sharedList.adapter = sharedItemsAdapter
 
+        binding.sharedList.addOnItemTouchListener(
+            AdapterItemClickListener(
+                context,
+                binding.sharedList,
+                object : AdapterItemClickListener.OnItemClickListener{
+                    override fun onItemClick(view: View?, position: Int) {
+                        Timber.v( "gridBills; onItemClick + " + position )
 
+                        homeViewModel.sharedItem.value?.get(position)?.sharedItemName?.let { sharedItemName ->
+                            binding.root.findNavController()
+                                .navigate(HomeFragmentDirections.actionNavigationHomeToSharedItemDetailFragment( sharedItemName ))
+                        }
+                    }
+
+                    override fun onLongItemClick(view: View?, position: Int) {
+                        Timber.v( "gridBills; onLongItemClick")
+                        onItemClick( view, position )
+                    }
+                }
+            )
+        )
         //END SHARED SECTION
 
 

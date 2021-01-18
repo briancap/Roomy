@@ -5,7 +5,7 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
-    <!-- HOME FRAGMENT, Bill, Chore, Shared Item -->
+    <!-- HOME FRAGMENT: Bill, Chore, Shared Item -->
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.roomy.ui.home.HomeFragment"
@@ -26,6 +26,7 @@
     </fragment>
 
 
+    <!-- ADD ITEM: Bill or Shared-->
     <fragment
         android:id="@+id/addItemFragment"
         android:name="com.example.roomy.ui.home.AddItemFragment"
@@ -36,6 +37,7 @@
     </fragment>
 
 
+    <!-- DETAILS: Bill-->
     <fragment
         android:id="@+id/billDetailFragment"
         android:name="com.example.roomy.ui.details.BillDetailFragment"
@@ -46,16 +48,23 @@
             app:argType="string" />
     </fragment>
 
+
+    <!-- All: Chroes-->
     <fragment
         android:id="@+id/choreDetailFragment"
         android:name="com.example.roomy.ui.details.ChoreDetailFragment"
         android:label="ChoreDetailFragment" />
 
+
+    <!-- DETAILS: Shared Item-->
     <fragment
         android:id="@+id/sharedItemDetailFragment"
         android:name="com.example.roomy.ui.details.SharedItemDetailFragment"
-        android:label="SharedItemDetailFragment" />
-
+        android:label="SharedItemDetailFragment">
+        <argument
+            android:name="sharedItemName"
+            app:argType="string" />
+    </fragment>
 
 
 
